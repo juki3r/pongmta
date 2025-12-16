@@ -516,6 +516,20 @@
         chatbotBody.innerHTML = "";
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbarCollapse = document.getElementById('navbarNav');
+        const navLinks = navbarCollapse.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse);
+            bsCollapse.hide();
+            }
+        });
+        });
+    });
+
 </script>
 </body>
 </html>
