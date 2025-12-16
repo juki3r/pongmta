@@ -423,6 +423,7 @@
     </div>
 </section>
 
+
 <!-- FOOTER / CONTACT -->
 <footer id="contact" class="bg-dark text-white py-5">
     <div class="container text-center footer">
@@ -454,6 +455,14 @@
     <button class="chat-option btn btn-sm btn-primary">Services</button>
     <button class="chat-option btn btn-sm btn-primary">Contact</button>
   </div>
+
+  <div id="chatbot-form" class="p-2" style="display:none;">
+        <input type="text" id="user-fullname" class="form-control mb-2" placeholder="Full Name">
+        <input type="email" id="user-email" class="form-control mb-2" placeholder="Email">
+        <input type="tel" id="user-phone" class="form-control mb-2" placeholder="Phone Number">
+        <button id="chatbot-submit" class="btn btn-success btn-sm w-100">Submit</button>
+    </div>
+
 </div>
 
 
@@ -503,8 +512,37 @@
                 const key = userMsg.toLowerCase();
                 const reply = responses[key] || "Sorry, I didn't understand that.";
                 setTimeout(() => addMessage(reply, 'bot-message'), 500);
+
+                // Show form if user clicks "Contact"
+                if(key === 'contact'){
+                    document.getElementById('chatbot-form').style.display = 'block';
+                }
             });
         });
+
+        document.getElementById('chatbot-submit').addEventListener('click', () => {
+            const name = document.getElementById('user-fullname').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const phone = document.getElementById('user-phone').value.trim();
+
+            if(!name || !email || !phone){
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            addMessage(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}`, 'user-message');
+            addMessage("Thank you! We will contact you soon.", 'bot-message');
+
+            // Optional: hide form after submission
+            document.getElementById('chatbot-form').style.display = 'none';
+
+            // Clear inputs
+            document.getElementById('user-fullname').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-phone').value = '';
+        });
+
+
 
         function addMessage(text, className) {
             const div = document.createElement('div');
