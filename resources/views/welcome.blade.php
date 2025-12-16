@@ -280,7 +280,6 @@
         <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link fw-medium" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
         </ul>
@@ -369,20 +368,6 @@
     </div>
 </section>
 
-<!-- TECHNOLOGIES -->
-<section id="technologies" class="py-5">
-    <div class="container text-center">
-        <h2 class="h2 fw-bold mb-4">Technologies We Use</h2>
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-            <img src="https://via.placeholder.com/100x50?text=MikroTik" class="technology-logo" alt="MikroTik">
-            <img src="https://via.placeholder.com/100x50?text=Ubiquiti" class="technology-logo" alt="Ubiquiti">
-            <img src="{{ asset('images/laravel.png') }}" class="technology-logo" alt="Laravel">
-            <img src="https://via.placeholder.com/100x50?text=React" class="technology-logo" alt="React">
-            <img src="https://via.placeholder.com/100x50?text=ESP32" class="technology-logo" alt="ESP32">
-            <img src="https://via.placeholder.com/100x50?text=RaspberryPi" class="technology-logo" alt="Raspberry Pi">
-        </div>
-    </div>
-</section>
 
 <!-- WHY US -->
 <section id="why-us" class="py-5 bg-light">
@@ -432,7 +417,6 @@
         <p class="fw-semibold">© {{ date('Y') }} PONG-MTA Technology Solutions</p>
         <div class="mt-3">
             <a href="#services">Services</a> | 
-            <a href="#technologies">Technologies</a> | 
             <a href="#why-us">Why Us</a>
         </div>
     </div>
