@@ -152,7 +152,7 @@
     bottom: 90px;
     right: 25px;
     width: 320px;
-    max-height: 620px;
+    max-height: 420px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.15);
@@ -218,6 +218,18 @@
     text-align: left;
     align-self: flex-start;
     }
+
+    #chatbot-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5); /* dim background */
+        display: none; /* hidden by default */
+        z-index: 9997; /* behind chatbot but above page */
+    }
+
 
     /* Mobile responsiveness */
     @media (max-width: 576px){
@@ -430,6 +442,9 @@
   <i class="bi bi-chat-dots-fill"></i>
 </div>
 
+<!-- Overlay -->
+<div id="chatbot-overlay"></div>
+
 <!-- Chat Window -->
 <div id="chatbot-window" class="bg-dark shadow">
   <div id="chatbot-header">Chat with us! <span id="chatbot-close">&times;</span></div>
@@ -451,33 +466,39 @@
         const chatbotClose = document.getElementById('chatbot-close');
         const chatbotBody = document.getElementById('chatbot-body');
         const optionButtons = document.querySelectorAll('.chat-option');
+        const chatbotOverlay = document.getElementById('chatbot-overlay'); // new
 
         const responses = {
             "services": "We offer Internet, CCTV, Web & Mobile Development, Automation, and System Integration.",
             "contact": "You can contact us via email or call us directly."
         };
 
-        // Open chatbot with auto greeting
+        // Open chatbot with auto greeting and overlay
         chatbotBtn.addEventListener('click', () => {
             chatbotWindow.style.display = 'flex';
             chatbotBtn.style.display = 'none';
-            // Auto greeting
+            chatbotOverlay.style.display = 'block'; // show overlay
             setTimeout(() => addMessage("Hello! Welcome to PONG-MTA. How can we assist you today?", 'bot-message'), 300);
         });
 
-        chatbotClose.addEventListener('click', () => {
+        // Close chatbot and overlay
+        function closeChatbot() {
             chatbotWindow.style.display = 'none';
             chatbotBtn.style.display = 'flex';
-            chatbotBody.innerHTML = ""; // Clear previous chat if you want fresh each time
-        });
+            chatbotOverlay.style.display = 'none'; // hide overlay
+            chatbotBody.innerHTML = ""; // clear chat
+        }
 
-        // Handle option buttons
+        chatbotClose.addEventListener('click', closeChatbot);
+
+        // Optional: click on overlay closes chatbot
+        chatbotOverlay.addEventListener('click', closeChatbot);
+
         optionButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 const userMsg = btn.innerText;
                 addMessage(userMsg, 'user-message');
 
-                // Bot reply
                 const key = userMsg.toLowerCase();
                 const reply = responses[key] || "Sorry, I didn't understand that.";
                 setTimeout(() => addMessage(reply, 'bot-message'), 500);
@@ -494,6 +515,7 @@
 
         chatbotBody.innerHTML = "";
     });
+
 </script>
 </body>
 </html>
