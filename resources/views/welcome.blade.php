@@ -28,7 +28,7 @@
             display: flex;
             align-items: center;
         }
-        .hero-section h1 { text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+        .hero-section h1 { text-shadow: 1px 1px 4px rgba(0,0,0,0.3); padding-top: 80px; }
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: all 0.3s ease; }
         .technology-logo { max-height: 50px; opacity: 0.8; transition: opacity 0.3s ease; }
         .technology-logo:hover { opacity: 1; }
@@ -128,39 +128,17 @@
 
 
         
-        </style>
+</style>
 </head>
 <body class="bg-light text-dark">
-
-<!-- NAVBAR -->
-{{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold text-primary" href="#">PONG-MTA</a>
-    
-    <!-- Custom Hamburger -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon custom-toggler"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
-        <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
-        <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> --}}
-
  <nav class="navbar navbar-expand-lg px-4">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#home">
         <img
           src="{{ asset('images/logo.png') }}"
           alt="Logo"
-          width="60"
-          height="60"
+          width="80"
+          height="80"
           class="me-2 rounded-circle bg-light"
         />
       </a>
