@@ -165,7 +165,7 @@
 
     /* Header */
     #chatbot-header {
-    background: #4f46e5;
+    background: #030303;
     color: #fff;
     padding: 12px 15px;
     font-weight: bold;
@@ -185,6 +185,7 @@
     padding: 10px;
     overflow-y: auto;
     font-size: 14px;
+    background: #030303;
     }
 
     /* Input */
@@ -434,7 +435,6 @@
   <div id="chatbot-header">Chat with us! <span id="chatbot-close">&times;</span></div>
   <div id="chatbot-body"></div>
   <div id="chatbot-options" class="p-2 d-flex flex-column gap-2">
-    <button class="chat-option btn btn-sm btn-primary">Hello</button>
     <button class="chat-option btn btn-sm btn-primary">Services</button>
     <button class="chat-option btn btn-sm btn-primary">Contact</button>
   </div>
@@ -445,7 +445,7 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
         const chatbotBtn = document.getElementById('chatbot-btn');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
@@ -453,20 +453,22 @@
         const optionButtons = document.querySelectorAll('.chat-option');
 
         const responses = {
-            "hello": "Hello! How can we help you today?",
             "services": "We offer Internet, CCTV, Web & Mobile Development, Automation, and System Integration.",
             "contact": "You can contact us via email or call us directly."
         };
 
-        // Open / close chatbot
+        // Open chatbot with auto greeting
         chatbotBtn.addEventListener('click', () => {
             chatbotWindow.style.display = 'flex';
             chatbotBtn.style.display = 'none';
+            // Auto greeting
+            setTimeout(() => addMessage("Hello! Welcome to PONG-MTA. How can we assist you today?", 'bot-message'), 300);
         });
 
         chatbotClose.addEventListener('click', () => {
             chatbotWindow.style.display = 'none';
             chatbotBtn.style.display = 'flex';
+            chatbotBody.innerHTML = ""; // Clear previous chat if you want fresh each time
         });
 
         // Handle option buttons
