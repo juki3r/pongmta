@@ -444,6 +444,61 @@
             </div>
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-chat-dots display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">SMS Blasting</h3>
+                    <p class="text-secondary">
+                        Bulk SMS solutions for promotions, alerts, OTPs, and customer notifications.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-diagram-2 display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Network Design & Optimization</h3>
+                    <p class="text-secondary">
+                        Scalable network planning, bandwidth management, and performance optimization.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-telephone display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">VoIP & IP Telephony</h3>
+                    <p class="text-secondary">
+                        SIP servers, IP phones, GSM gateways, call routing, and PBX solutions.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-hdd-network display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Server Hosting & Deployment</h3>
+                    <p class="text-secondary">
+                        On-premise & cloud servers, Linux administration, backups, and monitoring.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-activity display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Network Monitoring (NOC)</h3>
+                    <p class="text-secondary">
+                        Real-time monitoring, alerts, uptime tracking, and performance analytics.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-briefcase display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">IT Consulting</h3>
+                    <p class="text-secondary">
+                        Technology planning, system audits, and digital transformation strategies.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
                     <i class="bi bi-diagram-3 display-4 text-primary mb-3"></i>
                     <h3 class="h5 fw-semibold mb-2">System Integration</h3>
                     <p class="text-secondary">Network, server, VoIP & cloud integration.</p>
