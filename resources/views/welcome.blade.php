@@ -331,9 +331,6 @@
                 <p class="lead mb-2 fs-6 hero-typing">
                     <span id="type-text"></span>
                 </p>
-                <small class="text-light opacity-75 mb-4">
-                    Powering connectivity through ideas & technology
-                </small>
                 <p class="lead mb-4 fs-6">Internet • CCTV • Web & Mobile Development • Automation • System Integration</p>
                 <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4 mt-4">Explore Our Services</a>
             </div>
