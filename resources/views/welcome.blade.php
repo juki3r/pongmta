@@ -225,7 +225,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.7); /* dim background */
+        background: rgba(0,0,0,0.8); /* dim background */
         display: none; /* hidden by default */
         z-index: 9997; /* behind chatbot but above page */
     }
