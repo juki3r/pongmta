@@ -377,7 +377,7 @@
                         <span id="type-text"></span>
                     </p>
                 <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4 mt-4 explore-btn">
-                    <i class="bi bi-lightning-charge-fill me-2"></i>
+                    <i class="bi bi-cpu-fill me-2"></i>
                     Explore Our Services
                 </a>
 
