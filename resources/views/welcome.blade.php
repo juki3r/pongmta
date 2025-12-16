@@ -4,51 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
     <title>PONG-MTA Technology Solutions | ISP, CCTV, Web & System Integrator</title>
     <meta name="description" content="PONG-MTA is an Internet Service Provider and IT solutions company offering ISP services, CCTV installation, web & mobile development, automation, and system integration.">
     <meta name="keywords" content="ISP Philippines, CCTV Installer, System Integrator, Laravel Developer, Network Solutions, PONG-MTA">
     <meta name="author" content="PONG-MTA Technology Solutions">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="PONG-MTA Technology Solutions">
-    <meta property="og:description" content="Internet, CCTV, Web & Mobile Development, Automation, and System Integration">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-section {
+            background: linear-gradient(to right, #1e3a8a, #4f46e5);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-section h1 { text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: all 0.3s ease; }
+        .technology-logo { max-height: 50px; opacity: 0.8; transition: opacity 0.3s ease; }
+        .technology-logo:hover { opacity: 1; }
+        .why-us-card { border-left: 5px solid #4f46e5; transition: transform 0.3s ease; }
+        .why-us-card:hover { transform: translateY(-5px); }
+        .footer a { color: #0d6efd; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
 </head>
-
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-light text-dark">
 
 <!-- NAVBAR -->
-<nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="text-xl font-bold text-indigo-700">PONG-MTA</div>
-        <div class="space-x-6 hidden md:block">
-            <a href="#services" class="hover:text-indigo-600">Services</a>
-            <a href="#technologies" class="hover:text-indigo-600">Technologies</a>
-            <a href="#why-us" class="hover:text-indigo-600">Why Us</a>
-            <a href="#contact" class="hover:text-indigo-600">Contact</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">PONG-MTA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
+                <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
+                <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
+            </ul>
         </div>
     </div>
 </nav>
 
 <!-- HERO -->
-<section class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">PONG-MTA Technology Solutions</h1>
-        <p class="text-xl max-w-3xl mx-auto">
-            Internet • CCTV • Web & Mobile Development • Automation • System Integration
-        </p>
+<section class="hero-section text-center text-md-start">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h1 class="display-4 fw-bold mb-3">PONG-MTA Technology Solutions</h1>
+                <p class="lead mb-4">Internet • CCTV • Web & Mobile Development • Automation • System Integration</p>
+                <a href="#services" class="btn btn-primary btn-lg shadow-sm">Explore Our Services</a>
+            </div>
+            <div class="col-md-5 text-center">
+                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow" alt="Tech Illustration">
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section class="py-16">
-    <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-6">About PONG-MTA</h2>
-        <p class="leading-relaxed text-gray-700">
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="h2 fw-bold mb-4">About PONG-MTA</h2>
+        <p class="text-secondary fs-6">
             <strong>PONG-MTA</strong> is a professional technology solutions provider delivering
             reliable and scalable IT services. We specialize in Internet service deployment,
             CCTV and security systems, custom software development, automation, and full system
@@ -58,80 +88,121 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="bg-white py-16">
-    <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <a href="/services/isp" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold mb-3">Internet Service Provider</h3>
-                <p class="text-gray-700">Residential & business internet, fiber & wireless networks.</p>
-            </a>
-
-            <a href="/services/cctv" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold mb-3">CCTV & Security Systems</h3>
-                <p class="text-gray-700">IP cameras, monitoring, access control systems.</p>
-            </a>
-
-            <a href="/services/web" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold mb-3">Web Development</h3>
-                <p class="text-gray-700">Laravel systems, dashboards, APIs.</p>
-            </a>
-
-            <a href="/services/mobile" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold mb-3">Mobile App Development</h3>
-                <p class="text-gray-700">Android & offline-first applications.</p>
-            </a>
-
-            <a href="/services/automation" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold mb-3">Automation & IoT</h3>
-                <p class="text-gray-700">ESP32, Arduino, RFID & smart systems.</p>
-            </a>
-
-            <a href="/services/integration" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold mb-3">System Integration</h3>
-                <p class="text-gray-700">Network, server, VoIP & cloud integration.</p>
-            </a>
+<section id="services" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="h2 fw-bold text-center mb-5">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-wifi display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Internet Service Provider</h3>
+                    <p class="text-secondary">Residential & business internet, fiber & wireless networks.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-camera-video display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">CCTV & Security Systems</h3>
+                    <p class="text-secondary">IP cameras, monitoring, access control systems.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-code-slash display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Web Development</h3>
+                    <p class="text-secondary">Laravel systems, dashboards, APIs.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-phone display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Mobile App Development</h3>
+                    <p class="text-secondary">Android & offline-first applications.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-lightning display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">Automation & IoT</h3>
+                    <p class="text-secondary">ESP32, Arduino, RFID & smart systems.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm service-card text-center p-3">
+                    <i class="bi bi-diagram-3 display-4 text-primary mb-3"></i>
+                    <h3 class="h5 fw-semibold mb-2">System Integration</h3>
+                    <p class="text-secondary">Network, server, VoIP & cloud integration.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- TECHNOLOGIES -->
-<section id="technologies" class="py-16">
-    <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-6">Technologies We Use</h2>
-        <p class="text-gray-700">
-            MikroTik, Ubiquiti, Mimosa, Laravel, React, React Native, MySQL, ESP32,
-            Raspberry Pi, Linux, VPN, WireGuard.
-        </p>
+<section id="technologies" class="py-5">
+    <div class="container text-center">
+        <h2 class="h2 fw-bold mb-4">Technologies We Use</h2>
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+            <img src="https://via.placeholder.com/100x50?text=MikroTik" class="technology-logo" alt="MikroTik">
+            <img src="https://via.placeholder.com/100x50?text=Ubiquiti" class="technology-logo" alt="Ubiquiti">
+            <img src="https://via.placeholder.com/100x50?text=Laravel" class="technology-logo" alt="Laravel">
+            <img src="https://via.placeholder.com/100x50?text=React" class="technology-logo" alt="React">
+            <img src="https://via.placeholder.com/100x50?text=ESP32" class="technology-logo" alt="ESP32">
+            <img src="https://via.placeholder.com/100x50?text=RaspberryPi" class="technology-logo" alt="Raspberry Pi">
+        </div>
     </div>
 </section>
 
 <!-- WHY US -->
-<section id="why-us" class="bg-indigo-50 py-16">
-    <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-6">Why Choose PONG-MTA?</h2>
-        <ul class="list-disc ml-5 text-gray-700 space-y-2">
-            <li>Multi-discipline IT expertise</li>
-            <li>ISP & system integrator experience</li>
-            <li>Custom-built, secure solutions</li>
-            <li>Scalable & future-ready systems</li>
-            <li>Professional local support</li>
-        </ul>
+<section id="why-us" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="h2 fw-bold text-center mb-5">Why Choose PONG-MTA?</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
+                <div class="p-4 bg-white shadow-sm why-us-card">
+                    <h5 class="fw-bold">Multi-discipline IT expertise</h5>
+                    <p class="text-secondary mb-0">Expertise across networking, security, development, and automation.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 bg-white shadow-sm why-us-card">
+                    <h5 class="fw-bold">ISP & system integrator experience</h5>
+                    <p class="text-secondary mb-0">Proven experience providing internet and system solutions to businesses and residences.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 bg-white shadow-sm why-us-card">
+                    <h5 class="fw-bold">Custom-built, secure solutions</h5>
+                    <p class="text-secondary mb-0">Tailored software and network solutions designed for your business security.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 bg-white shadow-sm why-us-card">
+                    <h5 class="fw-bold">Scalable & future-ready systems</h5>
+                    <p class="text-secondary mb-0">Solutions designed to grow with your business.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 bg-white shadow-sm why-us-card">
+                    <h5 class="fw-bold">Professional local support</h5>
+                    <p class="text-secondary mb-0">Reliable support and maintenance when you need it most.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- FOOTER / CONTACT -->
-<footer id="contact" class="bg-gray-900 text-white py-16">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Let’s Work Together</h2>
-        <p class="mb-6">
-            Internet services, CCTV systems, software development, automation,
-            and full IT integration.
-        </p>
-        <p class="font-semibold">
-            © {{ date('Y') }} PONG-MTA Technology Solutions
-        </p>
+<footer id="contact" class="bg-dark text-white py-5">
+    <div class="container text-center footer">
+        <h2 class="h2 fw-bold mb-3">Let’s Work Together</h2>
+        <p class="mb-3 fs-6">Internet services, CCTV systems, software development, automation, and full IT integration.</p>
+        <p class="fw-semibold">© {{ date('Y') }} PONG-MTA Technology Solutions</p>
+        <div class="mt-3">
+            <a href="#services">Services</a> | 
+            <a href="#technologies">Technologies</a> | 
+            <a href="#why-us">Why Us</a>
+        </div>
     </div>
 </footer>
 
