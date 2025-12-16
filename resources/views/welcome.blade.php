@@ -155,7 +155,7 @@
     max-height: 400px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     display: none;
     flex-direction: column;
     overflow: hidden;
@@ -165,7 +165,7 @@
 
     /* Header */
     #chatbot-header {
-    background: #030303;
+    background: #080808;
     color: #fff;
     padding: 12px 15px;
     font-weight: bold;
@@ -185,7 +185,7 @@
     padding: 10px;
     overflow-y: auto;
     font-size: 14px;
-    background: #030303;
+    background: #ffffff;
     }
 
     /* Input */
@@ -206,8 +206,8 @@
     }
 
     .user-message {
-        background: #030303;
-        color: white;
+        background: white;
+        color: black;
         text-align: right;
         align-self: flex-end;
     }
@@ -225,7 +225,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.5); /* dim background */
+        background: rgba(0,0,0,0.7); /* dim background */
         display: none; /* hidden by default */
         z-index: 9997; /* behind chatbot but above page */
     }
@@ -446,7 +446,7 @@
 <div id="chatbot-overlay"></div>
 
 <!-- Chat Window -->
-<div id="chatbot-window" class="bg-dark shadow">
+<div id="chatbot-window">
   <div id="chatbot-header">Chat with us! <span id="chatbot-close">&times;</span></div>
   <div id="chatbot-body"></div>
   <div id="chatbot-options" class="p-2 d-flex flex-column gap-2">
