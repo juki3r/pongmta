@@ -460,31 +460,38 @@
         <h2 class="h2 fw-bold text-center mb-5">Why Choose PONG-MTA?</h2>
         <div class="row g-4 justify-content-center">
             <div class="col-md-5">
-                <div class="p-4 bg-white shadow-sm why-us-card">
+                <div class="p-4 bg-white shadow-sm why-us-card h-100">
                     <h5 class="fw-bold">Multi-discipline IT expertise</h5>
                     <p class="text-secondary mb-0">Expertise across networking, security, development, and automation.</p>
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="p-4 bg-white shadow-sm why-us-card">
+                <div class="p-4 bg-white shadow-sm why-us-card h-100">
                     <h5 class="fw-bold">ISP & system integrator experience</h5>
                     <p class="text-secondary mb-0">Proven experience providing internet and system solutions to businesses and residences.</p>
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="p-4 bg-white shadow-sm why-us-card">
+                <div class="p-4 bg-white shadow-sm why-us-card h-100">
                     <h5 class="fw-bold">Custom-built, secure solutions</h5>
                     <p class="text-secondary mb-0">Tailored software and network solutions designed for your business security.</p>
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="p-4 bg-white shadow-sm why-us-card">
+                <div class="p-4 bg-white shadow-sm why-us-card h-100">
                     <h5 class="fw-bold">Scalable & future-ready systems</h5>
                     <p class="text-secondary mb-0">Solutions designed to grow with your business.</p>
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="p-4 bg-white shadow-sm why-us-card">
+                <div class="p-4 bg-white shadow-sm why-us-card h-100">
+                    <h5 class="fw-bold">Innovation-Driven Solutions</h5>
+                    <p class="text-secondary mb-0">We design forward-thinking systems using automation, modern frameworks,
+                        and emerging technologies to keep your system ahead.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 bg-white shadow-sm why-us-card h-100">
                     <h5 class="fw-bold">Professional local support</h5>
                     <p class="text-secondary mb-0">Reliable support and maintenance when you need it most.</p>
                 </div>
