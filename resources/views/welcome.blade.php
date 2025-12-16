@@ -507,6 +507,10 @@
         document.getElementById('chatbot-submit').addEventListener('click', () => {
             const name = document.getElementById('user-fullname').value.trim();
             const email = document.getElementById('user-email').value.trim();
+            if(!name || !email){
+                alert("Please fill in all fields!");
+                return;
+            }
 
             addMessage(`Name: ${name}\nEmail/Phone: ${email}`, 'user-message');
             addMessage("Thank you! We will contact you soon.", 'bot-message');
