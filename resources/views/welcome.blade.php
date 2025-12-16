@@ -232,7 +232,6 @@
 
     .hero-typing {
         min-height: 28px;
-        text-align: center;
         }
 
         #type-text {
@@ -329,7 +328,7 @@
             <div class="col-md-7">
                 <h1 class="display-4 fw-bold mb-0">PONG-MTA</h1>
                 <h4 class="mt-0 mb-0 text-warning">Technology Solutions</h4>
-                <p class="lead mb-5 fs-5 hero-typing">
+                <p class="lead mb-5 fs-6 hero-typing">
                     <span id="type-text"></span>
                 </p>
                 <p class="lead mb-4 fs-5">Internet • CCTV • Web & Mobile Development • Smart IoT & Automation • System Integration</p>
