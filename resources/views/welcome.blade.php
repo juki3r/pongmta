@@ -232,6 +232,7 @@
 
     .hero-typing {
         min-height: 28px;
+        padding: 8px
         }
 
         #type-text {
@@ -247,7 +248,7 @@
         /* Cursor */
         #type-text::after {
         content: "▍";
-        margin-left: 4px;
+        margin-left: 10px;
         animation: cursorBlink 1s infinite;
         color: #fff;
         }
@@ -327,10 +328,13 @@
         <div class="row align-items-center">
             <div class="col-md-7">
                 <h1 class="display-4 fw-bold mb-0">PONG-MTA</h1>
-                <h4 class="mt-0 mb-0 text-warning">Technology Solutions</h4>
-                <p class="lead mb-5 fs-6 hero-typing text-center">
-                    <span id="type-text"></span>
-                </p>
+                <h4 class="mt-0 mb-5 text-warning">
+                    Technology Solutions
+                    <p class="lead  fs-6 hero-typing">
+                        <span id="type-text"></span>
+                    </p>
+                </h4>
+                
                 <p class="lead mb-4 fs-5">Internet • CCTV • Web & Mobile Development • Smart IoT & Automation • System Integration</p>
                 <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4 mt-4">Explore Our Services</a>
             </div>
