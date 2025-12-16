@@ -58,7 +58,7 @@
 
     .navbar-brand:hover,
     .nav-link:hover {
-      color: #e50914 !important;
+      /* color: #e50914 !important; */
     }
 
     /* Hamburger custom */
