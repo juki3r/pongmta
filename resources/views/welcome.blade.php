@@ -116,6 +116,11 @@
     .navbar-toggler:not(.collapsed) span {
       opacity: 0;
     }
+    .navbar-brand img {
+        width: 80px;
+        height: 80px;
+        transition: all 0.3s ease;
+    }
 
 
     /* === MOBILE FIXES === */
@@ -124,6 +129,11 @@
         padding-left: 1rem !important;
         padding-right: 1rem !important;
       }
+
+      .navbar-brand img {
+            width: 60px;
+            height: 60px;
+        }
       
     }
 
