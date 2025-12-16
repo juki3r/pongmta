@@ -3,12 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PONG-MTA | Technology Solutions</title>
 
-    {{-- Tailwind CSS (remove if already included in your layout) --}}
+    <!-- SEO -->
+    <title>PONG-MTA Technology Solutions | ISP, CCTV, Web & System Integrator</title>
+    <meta name="description" content="PONG-MTA is an Internet Service Provider and IT solutions company offering ISP services, CCTV installation, web & mobile development, automation, and system integration.">
+    <meta name="keywords" content="ISP Philippines, CCTV Installer, System Integrator, Laravel Developer, Network Solutions, PONG-MTA">
+    <meta name="author" content="PONG-MTA Technology Solutions">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PONG-MTA Technology Solutions">
+    <meta property="og:description" content="Internet, CCTV, Web & Mobile Development, Automation, and System Integration">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold text-indigo-700">PONG-MTA</div>
+        <div class="space-x-6 hidden md:block">
+            <a href="#services" class="hover:text-indigo-600">Services</a>
+            <a href="#technologies" class="hover:text-indigo-600">Technologies</a>
+            <a href="#why-us" class="hover:text-indigo-600">Why Us</a>
+            <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        </div>
+    </div>
+</nav>
 
 <!-- HERO -->
 <section class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white py-24">
@@ -29,119 +53,87 @@
             reliable and scalable IT services. We specialize in Internet service deployment,
             CCTV and security systems, custom software development, automation, and full system
             integration.
-            <br><br>
-            Our goal is to provide practical, secure, and future-ready solutions for
-            communities, businesses, institutions, and local government units.
         </p>
     </div>
 </section>
 
 <!-- SERVICES -->
-<section class="bg-white py-16">
+<section id="services" class="bg-white py-16">
     <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
 
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="border rounded-lg p-6 shadow-sm">
+            <a href="/services/isp" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
                 <h3 class="text-xl font-semibold mb-3">Internet Service Provider</h3>
-                <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                    <li>Residential & Business Internet</li>
-                    <li>Fiber & Wireless Networks</li>
-                    <li>MikroTik Network Management</li>
-                    <li>Island & Remote Area Connectivity</li>
-                </ul>
-            </div>
+                <p class="text-gray-700">Residential & business internet, fiber & wireless networks.</p>
+            </a>
 
-            <div class="border rounded-lg p-6 shadow-sm">
+            <a href="/services/cctv" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
                 <h3 class="text-xl font-semibold mb-3">CCTV & Security Systems</h3>
-                <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                    <li>IP & Analog CCTV Installation</li>
-                    <li>Remote Viewing Setup</li>
-                    <li>NVR / DVR Configuration</li>
-                    <li>Maintenance & Support</li>
-                </ul>
-            </div>
+                <p class="text-gray-700">IP cameras, monitoring, access control systems.</p>
+            </a>
 
-            <div class="border rounded-lg p-6 shadow-sm">
+            <a href="/services/web" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
                 <h3 class="text-xl font-semibold mb-3">Web Development</h3>
-                <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                    <li>Laravel Web Applications</li>
-                    <li>Admin Dashboards</li>
-                    <li>API Development</li>
-                    <li>Hosting & Deployment</li>
-                </ul>
-            </div>
+                <p class="text-gray-700">Laravel systems, dashboards, APIs.</p>
+            </a>
 
-            <div class="border rounded-lg p-6 shadow-sm">
+            <a href="/services/mobile" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
                 <h3 class="text-xl font-semibold mb-3">Mobile App Development</h3>
-                <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                    <li>Android & Cross-Platform Apps</li>
-                    <li>Offline-First Applications</li>
-                    <li>API Integration</li>
-                    <li>Custom Business Apps</li>
-                </ul>
-            </div>
+                <p class="text-gray-700">Android & offline-first applications.</p>
+            </a>
 
-            <div class="border rounded-lg p-6 shadow-sm">
+            <a href="/services/automation" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
                 <h3 class="text-xl font-semibold mb-3">Automation & IoT</h3>
-                <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                    <li>Arduino & ESP32 Systems</li>
-                    <li>RFID & Access Control</li>
-                    <li>Smart Sensors & Controls</li>
-                    <li>Custom Embedded Solutions</li>
-                </ul>
-            </div>
+                <p class="text-gray-700">ESP32, Arduino, RFID & smart systems.</p>
+            </a>
 
-            <div class="border rounded-lg p-6 shadow-sm">
+            <a href="/services/integration" class="border rounded-lg p-6 shadow-sm hover:shadow-lg transition">
                 <h3 class="text-xl font-semibold mb-3">System Integration</h3>
-                <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                    <li>End-to-End IT Solutions</li>
-                    <li>Network + Software Integration</li>
-                    <li>VoIP & Communication Systems</li>
-                    <li>Server & Cloud Deployment</li>
-                </ul>
-            </div>
+                <p class="text-gray-700">Network, server, VoIP & cloud integration.</p>
+            </a>
         </div>
     </div>
 </section>
 
 <!-- TECHNOLOGIES -->
-<section class="py-16">
+<section id="technologies" class="py-16">
     <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-3xl font-bold mb-6">Technologies We Use</h2>
-        <p class="text-gray-700 leading-relaxed">
-            MikroTik, Ubiquiti, Mimosa, VLAN, PPPoE, Laravel, React, React Native,
-            MySQL, SQLite, Arduino, ESP32, Raspberry Pi, Linux Servers, VPN, WireGuard,
-            Cloud & On-Premise Systems.
+        <p class="text-gray-700">
+            MikroTik, Ubiquiti, Mimosa, Laravel, React, React Native, MySQL, ESP32,
+            Raspberry Pi, Linux, VPN, WireGuard.
         </p>
     </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section class="bg-indigo-50 py-16">
+<!-- WHY US -->
+<section id="why-us" class="bg-indigo-50 py-16">
     <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-3xl font-bold mb-6">Why Choose PONG-MTA?</h2>
         <ul class="list-disc ml-5 text-gray-700 space-y-2">
             <li>Multi-discipline IT expertise</li>
-            <li>Real-world deployment experience</li>
-            <li>Custom-built solutions</li>
-            <li>Secure and scalable systems</li>
+            <li>ISP & system integrator experience</li>
+            <li>Custom-built, secure solutions</li>
+            <li>Scalable & future-ready systems</li>
             <li>Professional local support</li>
         </ul>
     </div>
 </section>
 
-<!-- CONTACT -->
-<section class="bg-gray-900 text-white py-16">
+<!-- FOOTER / CONTACT -->
+<footer id="contact" class="bg-gray-900 text-white py-16">
     <div class="max-w-5xl mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold mb-4">Let’s Work Together</h2>
         <p class="mb-6">
             Internet services, CCTV systems, software development, automation,
-            and full IT integration — we’ve got you covered.
+            and full IT integration.
         </p>
-        <p class="font-semibold">PONG-MTA Technology Solutions</p>
+        <p class="font-semibold">
+            © {{ date('Y') }} PONG-MTA Technology Solutions
+        </p>
     </div>
-</section>
+</footer>
 
 </body>
 </html>
