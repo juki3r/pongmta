@@ -457,7 +457,7 @@
   </div>
 
   <div id="chatbot-form" class="p-3 border" style="display:none;">
-    <h4 class="fw-bold">Enter your details</h4>
+        <h4 class="fw-bold">Enter your details</h4>
         <input type="text" id="user-fullname" class="form-control mb-2" placeholder="Full Name">
         <input type="email" id="user-email" class="form-control mb-2" placeholder="Email or Phone number">
         <button id="chatbot-submit" class="btn btn-success btn-sm w-100">Submit</button>
@@ -523,13 +523,12 @@
         document.getElementById('chatbot-submit').addEventListener('click', () => {
             const name = document.getElementById('user-fullname').value.trim();
             const email = document.getElementById('user-email').value.trim();
-
             if(!name || !email){
                 alert("Please fill in all fields!");
                 return;
             }
 
-            addMessage(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}`, 'user-message');
+            addMessage(`Name: ${name}\nEmail: ${email}`, 'user-message');
             addMessage("Thank you! We will contact you soon.", 'bot-message');
 
             // Optional: hide form after submission
@@ -538,7 +537,6 @@
             // Clear inputs
             document.getElementById('user-fullname').value = '';
             document.getElementById('user-email').value = '';
-            document.getElementById('user-phone').value = '';
         });
 
 
