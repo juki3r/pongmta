@@ -68,7 +68,7 @@
                 <a href="#services" class="btn btn-primary btn-lg shadow-sm">Explore Our Services</a>
             </div>
             <div class="col-md-5 text-center">
-                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow" alt="Tech Illustration">
+                <img src="{{ asset('images/feature.png') }}" class="img-fluid rounded shadow" alt="Tech Illustration">
             </div>
         </div>
     </div>
