@@ -122,6 +122,107 @@
         transition: all 0.3s ease;
     }
 
+    /* Chat Button */
+    #chatbot-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: #4f46e5;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: transform 0.3s ease, background 0.3s ease;
+    }
+    #chatbot-btn:hover {
+    transform: scale(1.1);
+    background: #3730a3;
+    }
+
+    /* Chat Window */
+    #chatbot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    width: 320px;
+    max-height: 420px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    z-index: 9998;
+    }
+
+    /* Header */
+    #chatbot-header {
+    background: #4f46e5;
+    color: #fff;
+    padding: 12px 15px;
+    font-weight: bold;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    #chatbot-close {
+    cursor: pointer;
+    font-size: 20px;
+    }
+
+    /* Body */
+    #chatbot-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+    }
+
+    /* Input */
+    #chatbot-input {
+    border: none;
+    border-top: 1px solid #ccc;
+    padding: 12px 10px;
+    font-size: 14px;
+    outline: none;
+    }
+
+    /* Messages */
+    .message {
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    }
+
+    .user-message {
+    background: #4f46e5;
+    color: white;
+    text-align: right;
+    align-self: flex-end;
+    }
+
+    .bot-message {
+    background: #f1f1f1;
+    color: #333;
+    text-align: left;
+    align-self: flex-start;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 576px){
+    #chatbot-window { width: 90%; right: 5%; bottom: 80px; }
+    #chatbot-btn { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 24px; }
+    }
 
     /* === MOBILE FIXES === */
     @media (max-width: 768px) {
@@ -261,7 +362,7 @@
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
             <img src="https://via.placeholder.com/100x50?text=MikroTik" class="technology-logo" alt="MikroTik">
             <img src="https://via.placeholder.com/100x50?text=Ubiquiti" class="technology-logo" alt="Ubiquiti">
-            <img src="https://via.placeholder.com/100x50?text=Laravel" class="technology-logo" alt="Laravel">
+            <img src="{{ asset('images/laravel.png') }}" class="technology-logo" alt="Laravel">
             <img src="https://via.placeholder.com/100x50?text=React" class="technology-logo" alt="React">
             <img src="https://via.placeholder.com/100x50?text=ESP32" class="technology-logo" alt="ESP32">
             <img src="https://via.placeholder.com/100x50?text=RaspberryPi" class="technology-logo" alt="Raspberry Pi">
@@ -321,13 +422,86 @@
         </div>
     </div>
 </footer>
-<script>
-    const toggler = document.querySelector('.navbar-toggler .custom-toggler');
-    toggler.innerHTML = '<div></div>'; // add middle bar div
 
-    toggler.addEventListener('click', () => {
-        toggler.classList.toggle('active');
+<!-- MODERN CHATBOT -->
+<!-- Chat Button -->
+<div id="chatbot-btn">
+  <i class="bi bi-chat-dots-fill"></i>
+</div>
+
+<!-- Chat Window -->
+<div id="chatbot-window">
+  <div id="chatbot-header">Chat with us! <span id="chatbot-close">&times;</span></div>
+  <div id="chatbot-body"></div>
+  <input type="text" id="chatbot-input" placeholder="Type your message..."/>
+</div>
+
+
+
+
+<script>
+    // const toggler = document.querySelector('.navbar-toggler .custom-toggler');
+    // toggler.innerHTML = '<div></div>'; // add middle bar div
+
+    // toggler.addEventListener('click', () => {
+    //     toggler.classList.toggle('active');
+    // });
+
+
+    const chatbotBtn = document.getElementById('chatbot-btn');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotBody = document.getElementById('chatbot-body');
+    const chatbotInput = document.getElementById('chatbot-input');
+
+    // Toggle chatbot window
+    chatbotBtn.addEventListener('click', () => {
+      chatbotWindow.style.display = 'flex';
+      chatbotBtn.style.display = 'none';
     });
+    chatbotClose.addEventListener('click', () => {
+      chatbotWindow.style.display = 'none';
+      chatbotBtn.style.display = 'flex';
+    });
+
+    // Simple responses
+    const responses = {
+      "hello": "Hello! How can we help you today?",
+      "hi": "Hi there! Need assistance?",
+      "services": "We offer Internet, CCTV, Web & Mobile Development, Automation, and System Integration.",
+      "contact": "You can contact us via email or call us directly."
+    };
+
+    // Send message
+    chatbotInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && chatbotInput.value.trim() !== "") {
+        const userMsg = chatbotInput.value.trim();
+        addMessage(userMsg, 'user-message');
+        chatbotInput.value = '';
+
+        // Simple reply
+        let reply = "Sorry, I didn't understand that. Try: hello, services, contact.";
+        for (let key in responses) {
+          if (userMsg.toLowerCase().includes(key)) {
+            reply = responses[key];
+            break;
+          }
+        }
+
+        setTimeout(() => addMessage(reply, 'bot-message'), 500);
+      }
+    });
+
+    function addMessage(text, className) {
+      const div = document.createElement('div');
+      div.className = 'message ' + className;
+      div.innerText = text;
+      chatbotBody.appendChild(div);
+      chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    }
+
+    // Initialize empty
+    chatbotBody.innerHTML = "";
 </script>
 </body>
 </html>
