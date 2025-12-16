@@ -457,7 +457,7 @@
   </div>
 
   <div id="chatbot-form" class="p-3 border" style="display:none;">
-    <h4>Fill up the form</h4>
+    <h4 class="fw-bold">Enter your details</h4>
         <input type="text" id="user-fullname" class="form-control mb-2" placeholder="Full Name">
         <input type="email" id="user-email" class="form-control mb-2" placeholder="Email or Phone number">
         <button id="chatbot-submit" class="btn btn-success btn-sm w-100">Submit</button>
