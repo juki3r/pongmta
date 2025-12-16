@@ -163,7 +163,7 @@
   </nav>
 
 <!-- HERO -->
-<section class="hero-section text-center text-md-start">
+<section class="hero-section text-center text-md-start" id="home">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-md-7">
