@@ -152,7 +152,7 @@
     bottom: 90px;
     right: 25px;
     width: 320px;
-    max-height: 320px;
+    max-height: 400px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.15);
