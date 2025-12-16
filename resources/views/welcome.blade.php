@@ -433,75 +433,65 @@
 <div id="chatbot-window">
   <div id="chatbot-header">Chat with us! <span id="chatbot-close">&times;</span></div>
   <div id="chatbot-body"></div>
-  <input type="text" id="chatbot-input" placeholder="Type your message..."/>
+  <div id="chatbot-options" class="p-2 d-flex flex-column gap-2">
+    <button class="chat-option btn btn-sm btn-primary">Hello</button>
+    <button class="chat-option btn btn-sm btn-primary">Services</button>
+    <button class="chat-option btn btn-sm btn-primary">Contact</button>
+  </div>
 </div>
 
 
 
 
+
 <script>
-    // const toggler = document.querySelector('.navbar-toggler .custom-toggler');
-    // toggler.innerHTML = '<div></div>'; // add middle bar div
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatbotBtn = document.getElementById('chatbot-btn');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotBody = document.getElementById('chatbot-body');
+        const optionButtons = document.querySelectorAll('.chat-option');
 
-    // toggler.addEventListener('click', () => {
-    //     toggler.classList.toggle('active');
-    // });
+        const responses = {
+            "hello": "Hello! How can we help you today?",
+            "services": "We offer Internet, CCTV, Web & Mobile Development, Automation, and System Integration.",
+            "contact": "You can contact us via email or call us directly."
+        };
 
+        // Open / close chatbot
+        chatbotBtn.addEventListener('click', () => {
+            chatbotWindow.style.display = 'flex';
+            chatbotBtn.style.display = 'none';
+        });
 
-    const chatbotBtn = document.getElementById('chatbot-btn');
-    const chatbotWindow = document.getElementById('chatbot-window');
-    const chatbotClose = document.getElementById('chatbot-close');
-    const chatbotBody = document.getElementById('chatbot-body');
-    const chatbotInput = document.getElementById('chatbot-input');
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.style.display = 'none';
+            chatbotBtn.style.display = 'flex';
+        });
 
-    // Toggle chatbot window
-    chatbotBtn.addEventListener('click', () => {
-      chatbotWindow.style.display = 'flex';
-      chatbotBtn.style.display = 'none';
-    });
-    chatbotClose.addEventListener('click', () => {
-      chatbotWindow.style.display = 'none';
-      chatbotBtn.style.display = 'flex';
-    });
+        // Handle option buttons
+        optionButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const userMsg = btn.innerText;
+                addMessage(userMsg, 'user-message');
 
-    // Simple responses
-    const responses = {
-      "hello": "Hello! How can we help you today?",
-      "hi": "Hi there! Need assistance?",
-      "services": "We offer Internet, CCTV, Web & Mobile Development, Automation, and System Integration.",
-      "contact": "You can contact us via email or call us directly."
-    };
+                // Bot reply
+                const key = userMsg.toLowerCase();
+                const reply = responses[key] || "Sorry, I didn't understand that.";
+                setTimeout(() => addMessage(reply, 'bot-message'), 500);
+            });
+        });
 
-    // Send message
-    chatbotInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter' && chatbotInput.value.trim() !== "") {
-        const userMsg = chatbotInput.value.trim();
-        addMessage(userMsg, 'user-message');
-        chatbotInput.value = '';
-
-        // Simple reply
-        let reply = "Sorry, I didn't understand that. Try: hello, services, contact.";
-        for (let key in responses) {
-          if (userMsg.toLowerCase().includes(key)) {
-            reply = responses[key];
-            break;
-          }
+        function addMessage(text, className) {
+            const div = document.createElement('div');
+            div.className = 'message ' + className;
+            div.innerText = text;
+            chatbotBody.appendChild(div);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
         }
 
-        setTimeout(() => addMessage(reply, 'bot-message'), 500);
-      }
+        chatbotBody.innerHTML = "";
     });
-
-    function addMessage(text, className) {
-      const div = document.createElement('div');
-      div.className = 'message ' + className;
-      div.innerText = text;
-      chatbotBody.appendChild(div);
-      chatbotBody.scrollTop = chatbotBody.scrollHeight;
-    }
-
-    // Initialize empty
-    chatbotBody.innerHTML = "";
 </script>
 </body>
 </html>
