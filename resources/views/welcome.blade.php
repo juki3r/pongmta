@@ -230,6 +230,40 @@
         z-index: 9997; /* behind chatbot but above page */
     }
 
+    .hero-typing {
+        min-height: 28px;
+        }
+
+        #type-text {
+        font-weight: 600;
+        background: linear-gradient(90deg, #ffffff, #facc15, #ffffff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s linear infinite;
+        position: relative;
+        }
+
+        /* Cursor */
+        #type-text::after {
+        content: "▍";
+        margin-left: 4px;
+        animation: cursorBlink 1s infinite;
+        color: #fff;
+        }
+
+        @keyframes cursorBlink {
+        0%, 50%, 100% { opacity: 1; }
+        25%, 75% { opacity: 0; }
+        }
+
+        @keyframes gradientMove {
+        to {
+            background-position: 200% center;
+        }
+        }
+
+
 
     /* Mobile responsiveness */
     @media (max-width: 576px){
@@ -294,8 +328,14 @@
             <div class="col-md-7">
                 <h1 class="display-4 fw-bold mb-0">PONG-MTA</h1>
                 <h4 class="mt-0 mb-4 text-warning">Technology Solutions</h4>
-                <p class="lead mb-4 fs-6">Internet • CCTV • Web & Mobile Development • Automation • System Integration</p>
-                <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4">Explore Our Services</a>
+                <p class="lead mb-4 fs-4">Internet • CCTV • Web & Mobile Development <br> • Automation • System Integration</p>
+                <p class="lead mb-2 fs-6 hero-typing">
+                    <span id="type-text"></span>
+                </p>
+                <small class="text-light opacity-75 mb-4">
+                    Powering connectivity through ideas & technology
+                </small> <br>
+                <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4 mt-4">Explore Our Services</a>
             </div>
             <div class="col-md-5 text-center">
                 <img src="{{ asset('images/feature.png') }}" class="img-fluid rounded shadow" alt="Tech Illustration">
@@ -549,6 +589,45 @@
         });
         });
     });
+
+
+
+    const texts = [
+        "Internet Infrastructure",
+        "CCTV & Security Automation",
+        "Web & Mobile Development",
+        "Smart IoT & Automation",
+        "Enterprise System Integration"
+        ];
+
+        let index = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeElement = document.getElementById("type-text");
+
+        function typeEffect() {
+        const currentText = texts[index];
+
+        if (!isDeleting && charIndex < currentText.length) {
+            typeElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            setTimeout(typeEffect, 60);
+        } 
+        else if (isDeleting && charIndex > 0) {
+            typeElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(typeEffect, 35);
+        } 
+        else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) {
+            index = (index + 1) % texts.length;
+            }
+            setTimeout(typeEffect, 1200);
+        }
+        }
+
+        document.addEventListener("DOMContentLoaded", typeEffect);
 
 </script>
 </body>
