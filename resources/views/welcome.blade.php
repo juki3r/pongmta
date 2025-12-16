@@ -168,7 +168,7 @@
             <div class="col-md-7">
                 <h1 class="display-4 fw-bold mb-3">PONG-MTA Technology Solutions</h1>
                 <p class="lead mb-4">Internet • CCTV • Web & Mobile Development • Automation • System Integration</p>
-                <a href="#services" class="btn btn-primary btn-lg shadow-sm">Explore Our Services</a>
+                <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4">Explore Our Services</a>
             </div>
             <div class="col-md-5 text-center">
                 <img src="{{ asset('images/feature.png') }}" class="img-fluid rounded shadow" alt="Tech Illustration">
