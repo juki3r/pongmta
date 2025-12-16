@@ -528,7 +528,7 @@
                 return;
             }
 
-            addMessage(`Name: ${name}\nEmail: ${email}`, 'user-message');
+            addMessage(`Name: ${name}\nEmail/Phone: ${email}`, 'user-message');
             addMessage("Thank you! We will contact you soon.", 'bot-message');
 
             // Optional: hide form after submission
