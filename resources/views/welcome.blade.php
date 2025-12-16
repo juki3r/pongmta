@@ -232,6 +232,7 @@
 
     .hero-typing {
         min-height: 28px;
+        text-align: center;
         }
 
         #type-text {
