@@ -180,7 +180,7 @@
             <div class="col-md-7">
                 <h1 class="display-4 fw-bold mb-0">PONG-MTA</h1>
                 <h4 class="mt-0 mb-4 text-warning">Technology Solutions</h4>
-                <p class="lead mb-4">Internet • CCTV • Web & Mobile Development • Automation • System Integration</p>
+                <p class="lead mb-4 fs-6">Internet • CCTV • Web & Mobile Development • Automation • System Integration</p>
                 <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4">Explore Our Services</a>
             </div>
             <div class="col-md-5 text-center">
