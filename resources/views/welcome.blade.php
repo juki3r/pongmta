@@ -265,6 +265,48 @@
 
 
 
+        .explore-btn {
+            position: relative;
+            overflow: hidden;
+            padding: 0.9rem 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            }
+
+            /* Icon animation */
+            .explore-btn i {
+            transition: transform 0.3s ease;
+            }
+
+            /* Hover effect */
+            .explore-btn:hover i {
+            transform: translateX(6px) rotate(5deg);
+            }
+
+            /* Glow sweep effect */
+            .explore-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.4),
+                transparent
+            );
+            transition: all 0.6s ease;
+            }
+
+            .explore-btn:hover::after {
+            left: 120%;
+            }
+
+
+
+
     /* Mobile responsiveness */
     @media (max-width: 576px){
     #chatbot-window { width: 90%; right: 5%; bottom: 80px; }
@@ -334,7 +376,11 @@
                  <p class="lead  fs-6 hero-typing">
                         <span id="type-text"></span>
                     </p>
-                <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4 mt-4">Explore Our Services</a>
+                <a href="#services" class="btn btn-primary btn-lg shadow-sm mb-4 mt-4 explore-btn">
+                    <i class="bi bi-lightning-charge-fill me-2"></i>
+                    Explore Our Services
+                </a>
+
             </div>
             <div class="col-md-5 text-center">
                 <img src="{{ asset('images/feature.png') }}" class="img-fluid rounded shadow" alt="Tech Illustration">
