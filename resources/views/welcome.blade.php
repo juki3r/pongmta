@@ -155,7 +155,7 @@
     max-height: 400px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     display: none;
     flex-direction: column;
     overflow: hidden;
@@ -165,7 +165,7 @@
 
     /* Header */
     #chatbot-header {
-    background: #080808;
+    background: purple;
     color: #fff;
     padding: 12px 15px;
     font-weight: bold;
