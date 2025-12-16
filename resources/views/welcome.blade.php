@@ -137,10 +137,11 @@
         <img
           src="{{ asset('images/logo.png') }}"
           alt="Logo"
-          width="80"
-          height="80"
+          width="60"
+          height="60"
           class="me-2 rounded-circle bg-light"
         />
+        PONG-MTA
       </a>
       <button
         class="navbar-toggler collapsed"
