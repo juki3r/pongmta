@@ -278,6 +278,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link fw-medium" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
