@@ -206,10 +206,10 @@
     }
 
     .user-message {
-    background: #4f46e5;
-    color: white;
-    text-align: right;
-    align-self: flex-end;
+        background: #030303;
+        color: white;
+        text-align: right;
+        align-self: flex-end;
     }
 
     .bot-message {
@@ -431,7 +431,7 @@
 </div>
 
 <!-- Chat Window -->
-<div id="chatbot-window">
+<div id="chatbot-window" class="bg-dark shadow">
   <div id="chatbot-header">Chat with us! <span id="chatbot-close">&times;</span></div>
   <div id="chatbot-body"></div>
   <div id="chatbot-options" class="p-2 d-flex flex-column gap-2">
