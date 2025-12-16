@@ -36,27 +36,152 @@
         .why-us-card:hover { transform: translateY(-5px); }
         .footer a { color: #0d6efd; text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
-    </style>
+
+
+   
+
+    /* Transparent navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover,
+    .nav-link:hover {
+      color: #e50914 !important;
+    }
+
+    /* Hamburger custom */
+    .navbar-toggler {
+      border: none;
+      outline: none !important;
+      box-shadow: none !important;
+      position: relative;
+      width: 30px;
+      height: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-toggler-icon {
+      display: none;
+    }
+
+    .navbar-toggler::before,
+    .navbar-toggler::after,
+    .navbar-toggler span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      content: "";
+    }
+
+    .navbar-toggler span {
+      top: 9px;
+    }
+
+    .navbar-toggler::before {
+      top: 0;
+    }
+
+    .navbar-toggler::after {
+      bottom: 0;
+    }
+
+    .navbar-toggler:not(.collapsed)::before {
+      transform: rotate(45deg);
+      top: 9px;
+      background: #e50914;
+    }
+
+    .navbar-toggler:not(.collapsed)::after {
+      transform: rotate(-45deg);
+      bottom: 9px;
+      background: #e50914;
+    }
+
+    .navbar-toggler:not(.collapsed) span {
+      opacity: 0;
+    }
+
+
+    /* === MOBILE FIXES === */
+    @media (max-width: 768px) {
+      .navbar {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      
+    }
+
+
+        
+        </style>
 </head>
 <body class="bg-light text-dark">
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="#">PONG-MTA</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
-                <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
-                <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
-            </ul>
-        </div>
+{{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#">PONG-MTA</a>
+    
+    <!-- Custom Hamburger -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon custom-toggler"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
+        <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
+      </ul>
     </div>
-</nav>
+  </div>
+</nav> --}}
+
+ <nav class="navbar navbar-expand-lg px-4">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#home">
+        <img
+          src="{{ asset('images/logo.png') }}"
+          alt="Logo"
+          width="60"
+          height="60"
+          class="me-2 rounded-circle bg-light"
+        />
+      </a>
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#technologies">Technologies</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 <!-- HERO -->
 <section class="hero-section text-center text-md-start">
@@ -205,6 +330,13 @@
         </div>
     </div>
 </footer>
+<script>
+    const toggler = document.querySelector('.navbar-toggler .custom-toggler');
+    toggler.innerHTML = '<div></div>'; // add middle bar div
 
+    toggler.addEventListener('click', () => {
+        toggler.classList.toggle('active');
+    });
+</script>
 </body>
 </html>
