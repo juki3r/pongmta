@@ -106,7 +106,7 @@ class AuthController extends Controller
             ],
         ]);
     }
-
+    //Verify OTP
     public function verifyOtp(Request $request)
     {
         $request->validate([
@@ -137,6 +137,58 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Mobile verified successfully',
+        ]);
+    }
+
+    //Resend OTP
+    public function resendOtp(Request $request)
+    {
+        $request->validate([
+            'mobile_number' => 'required|string',
+        ]);
+
+        $user = PongMtaUser::where('mobile_number', $request->mobile_number)->first();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        if ($user->mobile_verified) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Mobile number already verified',
+            ], 409);
+        }
+
+        // ⏱ Prevent spam (2-minute cooldown)
+        if ($user->otp_expires_at && now()->lt($user->otp_expires_at->subMinutes(3))) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Please wait before requesting another OTP',
+            ], 429);
+        }
+
+        // 🔐 Generate new OTP
+        $otp = rand(100000, 999999);
+
+        $user->otp = Hash::make($otp);
+        $user->otp_expires_at = Carbon::now()->addMinutes(2);
+        $user->save();
+
+        // 📲 SEND SMS (your gateway)
+        Http::withHeaders([
+            'X-API-KEY' => config('services.sms.api_key'),
+        ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
+            'phone_number' => $user->mobile_number,
+            'message' => "Your OTP code is {$otp}. Valid for 2 minutes.",
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'OTP resent successfully',
         ]);
     }
 }
