@@ -8,3 +8,7 @@ Route::get('/ping', function () {
         'message' => 'pong',
     ]);
 });
+
+//Register and Login PONG Mobile App
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
