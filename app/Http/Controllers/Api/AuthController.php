@@ -113,9 +113,11 @@ class AuthController extends Controller
                 'mobile_number' => $user->mobile_number,
                 'role' => $user->role,
                 'business_exists' => $businessExists,
+                'token' => $token,
             ],
         ]);
     }
+
     //Verify OTP
     public function verifyOtp(Request $request)
     {
