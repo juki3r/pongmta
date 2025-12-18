@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class PongMtaUser extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable; // ✅ add HasApiTokens
     protected $table = 'pong_mta_users';
 
     protected $fillable = [
