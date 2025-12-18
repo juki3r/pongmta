@@ -5,38 +5,55 @@ namespace App\Http\Controllers\api;
 use App\Models\Business;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class BusinessController extends Controller
 {
-    public function get(Request $request)
+    public function show(Request $request)
     {
-        $business = Business::where('user_id', $request->user()->id)->first();
+        $user = Auth::user();
+
+        // Fetch business for logged-in user
+        $business = Business::where('user_id', $user->id)->first();
+
+        if (!$business) {
+            return response()->json(null, 200); // return empty if none
+        }
+
         return response()->json($business);
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'category' => 'nullable|string',
-            'phone' => 'nullable|string',
-            'address' => 'nullable|string',
-            'logo' => 'nullable|image',
-            'cover_image' => 'nullable|image',
+        $user = Auth::user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'phone' => 'required|string|max:50',
+            'address' => 'required|string|max:255',
+            'logo' => 'nullable|image|max:2048', // max 2MB
         ]);
 
-        if ($request->hasFile('logo')) {
-            $data['logo'] = $request->file('logo')->store('logos', 'public');
-        }
-        if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $request->file('cover_image')->store('covers', 'public');
-        }
-
         $business = Business::updateOrCreate(
-            ['user_id' => $request->user()->id],
-            $data
+            ['user_id' => $user->id],
+            [
+                'name' => $request->name,
+                'category' => $request->category,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]
         );
 
-        return response()->json($business);
+        // Handle logo upload
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store('business_logos', 'public');
+            $business->logo = $path;
+            $business->save();
+        }
+
+        return response()->json(['message' => 'Business profile saved successfully']);
     }
 }
