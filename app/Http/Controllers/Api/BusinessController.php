@@ -1,42 +1,35 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Business;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Business;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-
 class BusinessController extends Controller
 {
+    // Get the authenticated user's business
     public function show(Request $request)
     {
-        // Get authenticated user via Sanctum
-        $user = $request->user(); // <- this works with auth:sanctum
-
-        // Fetch business for logged-in user
+        $user = $request->user();
         $business = Business::where('user_id', $user->id)->first();
-
-        if (!$business) {
-            return response()->json(null, 200); // return empty if none
-        }
 
         return response()->json($business);
     }
 
+    // Create or update business
     public function store(Request $request)
     {
-        // Get authenticated user via Sanctum
-        $user = $request->user(); // <- this works with auth:sanctum
+        $user = $request->user();
 
         $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'phone' => 'required|string|max:50',
             'address' => 'required|string|max:255',
-            'logo' => 'nullable|image|max:2048', // max 2MB
+            'logo' => 'nullable|image|max:2048',
         ]);
 
         $business = Business::updateOrCreate(
@@ -51,11 +44,17 @@ class BusinessController extends Controller
 
         // Handle logo upload
         if ($request->hasFile('logo')) {
+            // Delete old logo if exists
+            if ($business->logo) Storage::disk('public')->delete($business->logo);
+
             $path = $request->file('logo')->store('business_logos', 'public');
             $business->logo = $path;
             $business->save();
         }
 
-        return response()->json(['message' => 'Business profile saved successfully']);
+        return response()->json([
+            'message' => 'Business profile saved successfully',
+            'business' => $business
+        ]);
     }
 }
