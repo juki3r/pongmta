@@ -14,9 +14,21 @@ class PongMtaUser extends Authenticatable
         'address',
         'mobile_number',
         'password',
+        'mobile_verified',
+        'otp',
+        'otp_expires_at',
     ];
 
     protected $hidden = [
         'password',
+        'otp',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     */
+    protected $casts = [
+        'mobile_verified' => 'boolean',
+        'otp_expires_at' => 'datetime',
     ];
 }
