@@ -620,25 +620,17 @@
 
       <div class="modal-body">
         <form id="appointmentForm">
-          <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="appt-name" required>
-          </div>
+            @csrf
 
-          <div class="mb-3">
-            <label class="form-label">Address</label>
-            <textarea class="form-control" id="appt-address" rows="2" required></textarea>
-          </div>
+            <input type="text" class="form-control mb-2" name="full_name" placeholder="Full Name" required>
+            <textarea class="form-control mb-2" name="address" placeholder="Address" required></textarea>
+            <input type="text" class="form-control mb-3" name="contact" placeholder="Email or Phone" required>
 
-          <div class="mb-3">
-            <label class="form-label">Email / Phone</label>
-            <input type="text" class="form-control" id="appt-contact" required>
-          </div>
-
-          <button type="submit" class="btn btn-success w-100">
-            <i class="bi bi-send me-2"></i> Submit Appointment
-          </button>
+            <button type="submit" class="btn btn-success w-100">
+                Submit Appointment
+            </button>
         </form>
+
       </div>
     </div>
   </div>
@@ -784,33 +776,32 @@
 
         document.addEventListener("DOMContentLoaded", typeEffect);
 
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-                e.preventDefault();
+        document.getElementById('appointmentForm').addEventListener('submit', function(e){
+            e.preventDefault();
 
-                const name = document.getElementById('appt-name').value.trim();
-                const address = document.getElementById('appt-address').value.trim();
-                const contact = document.getElementById('appt-contact').value.trim();
+            const formData = new FormData(this);
 
-                if (!name || !address || !contact) {
-                    alert('Please complete all fields.');
-                    return;
+            fetch('/appointments', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name=_token]').value
+                },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success){
+                    alert('Appointment booked successfully!');
+                    this.reset();
+
+                    const modal = bootstrap.Modal.getInstance(
+                        document.getElementById('appointmentModal')
+                    );
+                    modal.hide();
                 }
-
-                alert(
-                    "Appointment Submitted!\n\n" +
-                    "Name: " + name + "\n" +
-                    "Address: " + address + "\n" +
-                    "Contact: " + contact
-                );
-
-                // Reset form
-                this.reset();
-
-                // Close modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById('appointmentModal'));
-                modal.hide();
-            });
-
+            })
+            .catch(() => alert('Something went wrong'));
+        });
 </script>
 </body>
 </html>
