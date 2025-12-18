@@ -8,6 +8,7 @@ use App\Models\PongMtaUser;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -35,7 +36,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // Login user
     public function login(Request $request)
     {
         $request->validate([
@@ -45,6 +45,7 @@ class AuthController extends Controller
 
         $user = PongMtaUser::where('mobile_number', $request->mobile_number)->first();
 
+        // ❌ Invalid credentials
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'success' => false,
@@ -52,16 +53,36 @@ class AuthController extends Controller
             ], 401);
         }
 
-        // Check if mobile is verified
+        // 🔐 MOBILE NOT VERIFIED → SEND OTP
         if (!$user->mobile_verified) {
-            // Generate OTP
-            $otp = rand(100000, 999999);
-            $user->otp = $otp;
-            $user->otp_expires_at = Carbon::now()->addMinutes(5); // OTP valid for 5 minutes
+
+            // ⛔ Prevent OTP spam (wait 60s before resend)
+            if ($user->otp_expires_at && now()->diffInSeconds($user->otp_expires_at) > 240) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Please wait before requesting another OTP',
+                ], 429);
+            }
+
+            // 🔢 Generate OTP
+            $otp = random_int(100000, 999999);
+
+            // 🔐 Store HASHED OTP
+            $user->otp = Hash::make($otp);
+            $user->otp_expires_at = now()->addMinutes(5);
             $user->save();
 
-            // Here you would send OTP via SMS using your provider
-            // sendOtp($user->mobile_number, $otp);
+            // 📩 Send SMS via your SMS Gateway
+            try {
+                Http::withHeaders([
+                    'X-API-KEY' => config('services.sms.api_key'),
+                ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
+                    'phone_number' => $user->mobile_number,
+                    'message' => "PONG OTP: {$otp}\nValid for 5 minutes.\nDo not share this code.",
+                ]);
+            } catch (\Exception $e) {
+                // optional logging
+            }
 
             return response()->json([
                 'success' => false,
@@ -69,15 +90,53 @@ class AuthController extends Controller
                 'data' => [
                     'mobile_number' => $user->mobile_number,
                     'otp_sent' => true,
+                    'expires_in' => 300, // seconds (matches app timer)
                 ],
             ], 403);
         }
 
-        // If mobile is verified, login success
+        // ✅ LOGIN SUCCESS
         return response()->json([
             'success' => true,
             'message' => 'Login successful',
-            'data' => $user,
+            'data' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'mobile_number' => $user->mobile_number,
+            ],
+        ]);
+    }
+
+    public function verifyOtp(Request $request)
+    {
+        $request->validate([
+            'mobile_number' => 'required|string',
+            'otp' => 'required|string',
+        ]);
+
+        $user = PongMtaUser::where('mobile_number', $request->mobile_number)->first();
+
+        if (!$user || !$user->otp || !$user->otp_expires_at) {
+            return response()->json(['message' => 'Invalid request'], 400);
+        }
+
+        if (now()->gt($user->otp_expires_at)) {
+            return response()->json(['message' => 'OTP expired'], 410);
+        }
+
+        if (!Hash::check($request->otp, $user->otp)) {
+            return response()->json(['message' => 'Invalid OTP'], 401);
+        }
+
+        // ✅ Verified
+        $user->mobile_verified = true;
+        $user->otp = null;
+        $user->otp_expires_at = null;
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Mobile verified successfully',
         ]);
     }
 }
