@@ -13,7 +13,8 @@ class BusinessController extends Controller
 {
     public function show(Request $request)
     {
-        $user = Auth::user();
+        // Get authenticated user via Sanctum
+        $user = $request->user(); // <- this works with auth:sanctum
 
         // Fetch business for logged-in user
         $business = Business::where('user_id', $user->id)->first();
@@ -27,7 +28,8 @@ class BusinessController extends Controller
 
     public function store(Request $request)
     {
-        $user = Auth::user();
+        // Get authenticated user via Sanctum
+        $user = $request->user(); // <- this works with auth:sanctum
 
         $request->validate([
             'name' => 'required|string|max:255',
