@@ -607,6 +607,44 @@
 </div>
 
 
+<!-- APPOINTMENT MODAL -->
+<div class="modal fade" id="appointmentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold">
+          <i class="bi bi-calendar-check me-2"></i> Book an Appointment
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="appointmentForm">
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="appt-name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" id="appt-address" rows="2" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email / Phone</label>
+            <input type="text" class="form-control" id="appt-contact" required>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">
+            <i class="bi bi-send me-2"></i> Submit Appointment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -745,6 +783,33 @@
         }
 
         document.addEventListener("DOMContentLoaded", typeEffect);
+
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('appt-name').value.trim();
+                const address = document.getElementById('appt-address').value.trim();
+                const contact = document.getElementById('appt-contact').value.trim();
+
+                if (!name || !address || !contact) {
+                    alert('Please complete all fields.');
+                    return;
+                }
+
+                alert(
+                    "Appointment Submitted!\n\n" +
+                    "Name: " + name + "\n" +
+                    "Address: " + address + "\n" +
+                    "Contact: " + contact
+                );
+
+                // Reset form
+                this.reset();
+
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('appointmentModal'));
+                modal.hide();
+            });
 
 </script>
 </body>
