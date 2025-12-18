@@ -191,4 +191,90 @@ class AuthController extends Controller
             'message' => 'OTP resent successfully',
         ]);
     }
+
+    //Forgot Password
+    public function forgotPassword(Request $request)
+    {
+        $request->validate([
+            'mobile_number' => 'required|string',
+        ]);
+
+        $user = PongMtaUser::where('mobile_number', $request->mobile_number)->first();
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'Mobile number not registered'
+            ], 404);
+        }
+
+        $otp = rand(100000, 999999);
+
+        $user->otp = Hash::make($otp);
+        $user->otp_expires_at = now()->addMinutes(2);
+        $user->save();
+
+        Http::withHeaders([
+            'X-API-KEY' => config('services.sms.api_key'),
+        ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
+            'phone_number' => $user->mobile_number,
+            'message' => "Your password reset OTP is {$otp}. Valid for 2 minutes.",
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'OTP sent',
+        ]);
+    }
+
+    //Verify Forgot OTP
+    public function verifyForgotOtp(Request $request)
+    {
+        $request->validate([
+            'mobile_number' => 'required|string',
+            'otp' => 'required|string',
+        ]);
+
+        $user = PongMtaUser::where('mobile_number', $request->mobile_number)->first();
+        if (!$user || !$user->otp || !$user->otp_expires_at) {
+            return response()->json(['message' => 'Invalid request'], 400);
+        }
+
+        if (now()->gt($user->otp_expires_at)) {
+            return response()->json(['message' => 'OTP expired'], 410);
+        }
+
+        if (!Hash::check($request->otp, $user->otp)) {
+            return response()->json(['message' => 'Invalid OTP'], 401);
+        }
+
+        // OTP verified
+        $user->otp = null;
+        $user->otp_expires_at = null;
+        $user->save();
+
+        return response()->json(['success' => true, 'message' => 'OTP verified']);
+    }
+
+    //Reset password
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'mobile_number' => 'required|string',
+            'password' => 'required|string|confirmed|min:6',
+        ]);
+
+        $user = PongMtaUser::where('mobile_number', $request->mobile_number)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Password reset successfully',
+        ]);
+    }
 }
