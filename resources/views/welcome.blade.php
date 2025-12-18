@@ -385,6 +385,11 @@
                     <i class="bi bi-cpu-fill me-2"></i>
                     Explore Our Services
                 </a>
+                <a href="#" class="btn btn-warning btn-lg ms-2" data-bs-toggle="modal" data-bs-target="#appointmentModal">
+                    <i class="bi bi-calendar-check me-2"></i>
+                    Book Appointment
+                </a>
+
 
             </div>
             <div class="col-md-5 text-center">
