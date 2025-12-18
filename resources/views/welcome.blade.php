@@ -386,7 +386,7 @@
                     Explore Our Services
                 </a>
                 <a href="#" class="btn btn-warning btn-lg ms-2" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                    <i class="bi bi-calendar-check me-2"></i>
+                    <i class="bi bi-calendar-check me-2 mb-4"></i>
                     Book Appointment
                 </a>
 
