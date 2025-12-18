@@ -69,7 +69,7 @@ class AuthController extends Controller
 
             // 🔐 Store HASHED OTP
             $user->otp = Hash::make($otp);
-            $user->otp_expires_at = now()->addMinutes(5);
+            $user->otp_expires_at = now()->addMinutes(2);
             $user->save();
 
             // 📩 Send SMS via your SMS Gateway
@@ -78,7 +78,7 @@ class AuthController extends Controller
                     'X-API-KEY' => config('services.sms.api_key'),
                 ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
                     'phone_number' => $user->mobile_number,
-                    'message' => "PONG OTP: {$otp}\nValid for 5 minutes.\nDo not share this code.",
+                    'message' => "PONG OTP: {$otp}\nValid for 2 minutes.\nDo not share this code.",
                 ]);
             } catch (\Exception $e) {
                 // optional logging
@@ -90,7 +90,7 @@ class AuthController extends Controller
                 'data' => [
                     'mobile_number' => $user->mobile_number,
                     'otp_sent' => true,
-                    'expires_in' => 300, // seconds (matches app timer)
+                    'expires_in' => 120, // seconds (matches app timer)
                 ],
             ], 403);
         }
