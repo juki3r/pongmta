@@ -94,6 +94,14 @@ class AuthController extends Controller
                 ],
             ], 403);
         }
+        // ✅ CREATE TOKEN
+        $token = $user->createToken('pong-app-token')->plainTextToken;
+
+        $businessExists = false;
+
+        if ($user->role === 'business') {
+            $businessExists = $user->business ? true : false;
+        }
 
         // ✅ LOGIN SUCCESS
         return response()->json([
@@ -104,6 +112,7 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'mobile_number' => $user->mobile_number,
                 'role' => $user->role,
+                'business_exists' => $businessExists,
             ],
         ]);
     }
