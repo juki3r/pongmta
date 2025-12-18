@@ -183,7 +183,7 @@ class AuthController extends Controller
             'X-API-KEY' => config('services.sms.api_key'),
         ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
             'phone_number' => $user->mobile_number,
-            'message' => "Your OTP code is {$otp}. Valid for 2 minutes.",
+            'message' => "PONG OTP: {$otp}\nValid for 2 minutes.\nDo not share this code.",
         ]);
 
         return response()->json([
