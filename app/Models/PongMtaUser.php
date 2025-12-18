@@ -14,6 +14,7 @@ class PongMtaUser extends Authenticatable
         'address',
         'mobile_number',
         'password',
+        'role',
         'mobile_verified',
         'otp',
         'otp_expires_at',
