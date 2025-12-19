@@ -806,6 +806,7 @@
                 if (data.success) {
                     alert(data.message);
                     form.reset();
+                    resetAppointmentButton();
 
                     const modal = bootstrap.Modal.getInstance(
                         document.getElementById('appointmentModal')
@@ -824,6 +825,16 @@
                 btnText.textContent = 'Submit Appointment';
             });
         });
+
+        function resetAppointmentButton() {
+            const submitBtn = document.getElementById('appointmentSubmit');
+            const spinner = submitBtn.querySelector('.spinner-border');
+            const btnText = submitBtn.querySelector('.btn-text');
+
+            submitBtn.disabled = false;
+            spinner.classList.add('d-none');
+            btnText.textContent = 'Submit Appointment';
+        }
 </script>
 </body>
 </html>
