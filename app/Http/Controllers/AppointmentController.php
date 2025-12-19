@@ -89,6 +89,18 @@ class AppointmentController extends Controller
                         "We will contact you shortly.\n\n" .
                         "- PONG-MTA",
                 ]);
+
+                // 📲 SMS to admin
+                Http::withHeaders([
+                    'X-API-KEY' => config('services.sms.api_key'),
+                ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
+                    'phone_number' => '09562078139', // admin number
+                    'message' =>
+                    "New Appointment Booked\n" .
+                        "Name: {$appointment->full_name}\n" .
+                        "Contact: {$appointment->contact}\n" .
+                        "Address: {$appointment->address}",
+                ]);
             } catch (\Exception $e) {
                 Log::error('Appointment SMS failed: ' . $e->getMessage());
             }
