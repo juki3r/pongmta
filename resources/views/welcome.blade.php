@@ -626,9 +626,11 @@
             <textarea class="form-control mb-2" name="address" placeholder="Address" required></textarea>
             <input type="text" class="form-control mb-3" name="contact" placeholder="Email or Phone" required>
 
-            <button type="submit" class="btn btn-success w-100">
-                Submit Appointment
+            <button type="submit" class="btn btn-success w-100" id="appointmentSubmit">
+                <span class="btn-text">Submit Appointment</span>
+                <span class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span>
             </button>
+
         </form>
 
       </div>
@@ -776,10 +778,21 @@
 
         document.addEventListener("DOMContentLoaded", typeEffect);
 
-        document.getElementById('appointmentForm').addEventListener('submit', function(e){
+        //Appointment Form
+        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const formData = new FormData(this);
+            const form = this;
+            const submitBtn = document.getElementById('appointmentSubmit');
+            const spinner = submitBtn.querySelector('.spinner-border');
+            const btnText = submitBtn.querySelector('.btn-text');
+
+            // 🔒 Prevent double submit
+            submitBtn.disabled = true;
+            spinner.classList.remove('d-none');
+            btnText.textContent = 'Submitting...';
+
+            const formData = new FormData(form);
 
             fetch('/appointments', {
                 method: 'POST',
@@ -790,17 +803,26 @@
             })
             .then(res => res.json())
             .then(data => {
-                if(data.success){
-                    alert('Appointment booked successfully!');
-                    this.reset();
+                if (data.success) {
+                    alert(data.message);
+                    form.reset();
 
                     const modal = bootstrap.Modal.getInstance(
                         document.getElementById('appointmentModal')
                     );
                     modal.hide();
+                } else {
+                    throw new Error('Submission failed');
                 }
             })
-            .catch(() => alert('Something went wrong'));
+            .catch(() => {
+                alert('Something went wrong. Please try again.');
+
+                // 🔓 Re-enable on error
+                submitBtn.disabled = false;
+                spinner.classList.add('d-none');
+                btnText.textContent = 'Submit Appointment';
+            });
         });
 </script>
 </body>
