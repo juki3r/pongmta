@@ -656,7 +656,7 @@
 
         const responses = {
             "services": "We offer Internet, CCTV, Web & Mobile Development, Automation, and System Integration.",
-            "contact": "You can contact us via email or call us directly."
+            "Book Appointment": "We will contact you soon if you submit info."
         };
 
         // Open chatbot with auto greeting and overlay
