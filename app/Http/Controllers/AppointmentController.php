@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 
 class AppointmentController extends Controller
 {
@@ -76,14 +77,20 @@ class AppointmentController extends Controller
     */
         if ($contactType === 'phone') {
             try {
-                // Example (replace with real SMS service)
-                // SmsService::send(
-                //     $appointment->contact,
-                //     "Thank you {$appointment->full_name}! Your appointment with PONG-MTA has been received."
-                // );
 
+                Http::withHeaders([
+                    'X-API-KEY' => config('services.sms.api_key'),
+                ])->post('https://sms.pong-mta.tech/api/send-sms-api', [
+                    'phone_number' => $appointment->contact,
+                    'message' =>
+                    "PONG-MTA Appointment\n" .
+                        "Hi {$appointment->full_name},\n" .
+                        "Your appointment request has been received.\n" .
+                        "We will contact you shortly.\n\n" .
+                        "- PONG-MTA",
+                ]);
             } catch (\Exception $e) {
-                Log::error('SMS sending failed: ' . $e->getMessage());
+                Log::error('Appointment SMS failed: ' . $e->getMessage());
             }
         }
 
