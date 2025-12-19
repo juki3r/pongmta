@@ -599,9 +599,19 @@
 
   <div id="chatbot-form" class="p-3 border" style="display:none;">
         <h4 class="fw-bold">Enter your details</h4>
-        <input type="text" id="user-fullname" class="form-control mb-2" placeholder="Full Name" required>
-        <input type="email" id="user-email" class="form-control mb-2" placeholder="Email or Phone number" required>
-        <button id="chatbot-submit" class="btn btn-success btn-sm w-100">Submit</button>
+        <form id="appointmentForm">
+            @csrf
+
+            <input type="text" class="form-control mb-2" name="full_name" placeholder="Full Name" required>
+            <textarea class="form-control mb-2" name="address" placeholder="Address" required></textarea>
+            <input type="text" class="form-control mb-3" name="contact" placeholder="Email or Phone" required>
+
+            <button type="submit" class="btn btn-success w-100" id="appointmentSubmit">
+                <span class="btn-text">Submit Appointment</span>
+                <span class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span>
+            </button>
+
+        </form>
     </div>
 
 </div>
