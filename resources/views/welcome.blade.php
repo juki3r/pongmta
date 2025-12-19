@@ -595,7 +595,7 @@
   <div id="chatbot-options" class="p-2 d-flex flex-column gap-2">
     <button class="chat-option btn btn-sm btn-primary">Services</button>
     <button class="chat-option btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-        <i class="bi bi-calendar-check me-2"></i> Book Appointment
+        Book Appointment
     </button>
 
   </div>
