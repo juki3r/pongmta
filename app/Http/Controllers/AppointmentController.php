@@ -60,7 +60,7 @@ class AppointmentController extends Controller
                         "Address: {$appointment->address}\n" .
                         "Contact: {$appointment->contact}\n",
                     function ($message) {
-                        $message->to('ajcpisonet@gmail.com')
+                        $message->to('pongmta26@gmail.com')
                             ->subject('New Appointment - PONG-MTA');
                     }
                 );
