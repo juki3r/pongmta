@@ -594,13 +594,10 @@
   <div id="chatbot-body"></div>
   <div id="chatbot-options" class="p-2 d-flex flex-column gap-2">
     <button class="chat-option btn btn-sm btn-primary">Services</button>
-    <button class="chat-option btn btn-sm btn-primary">Contact</button>
-    <button class="chat-option btn btn-sm btn-primary">
-        <a href="#" class="" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                    <i class="bi bi-calendar-check me-2"></i>
-                    Book Appointment
-                </a>
+    <button class="chat-option btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">
+        <i class="bi bi-calendar-check me-2"></i> Book Appointment
     </button>
+
   </div>
 
   <div id="chatbot-form" class="p-3 border" style="display:none;">
@@ -841,6 +838,21 @@
             spinner.classList.add('d-none');
             btnText.textContent = 'Submit Appointment';
         }
+
+        //Hide chatbot
+        document.querySelectorAll('[data-bs-target="#appointmentModal"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const chatbotWindow = document.getElementById('chatbot-window');
+                const chatbotBtn = document.getElementById('chatbot-btn');
+                const chatbotOverlay = document.getElementById('chatbot-overlay');
+
+                // Hide chatbot window and overlay
+                chatbotWindow.style.display = 'none';
+                chatbotBtn.style.display = 'flex';
+                chatbotOverlay.style.display = 'none';
+            });
+        });
+
 </script>
 </body>
 </html>
