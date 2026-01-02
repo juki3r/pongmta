@@ -357,7 +357,6 @@
             <li class="nav-item"><a class="nav-link fw-medium" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#services">Services</a></li>
             <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why Us</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
             <li class="nav-item"><a href="#" class="nav-link fw-medium" data-bs-toggle="modal" data-bs-target="#appointmentModal">
                 Book Appointment
             </a></li>
@@ -573,6 +572,7 @@
         <p class="mb-3 fs-6">Internet services, CCTV systems, software development, automation, and full IT integration.</p>
         <p class="fw-semibold">© {{ date('Y') }} PONG-MTA Technology Solutions</p>
         <div class="mt-3">
+            <a href="#home">Home</a> | 
             <a href="#services">Services</a> | 
             <a href="#why-us">Why Us</a>
         </div>
