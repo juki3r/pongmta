@@ -340,7 +340,7 @@
           alt="Logo"
           width="60"
           height="60"
-          class="me-2 rounded-circle bg-dark"
+          class="me-2 rounded-circle bg-light"
         />
         PONG-MTA
       </a>
