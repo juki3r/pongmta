@@ -336,7 +336,7 @@
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#home">
         <img
-          src="{{ asset('images/logo.png') }}"
+          src="{{ asset('images/logo1.png') }}"
           alt="Logo"
           width="60"
           height="60"
