@@ -338,9 +338,9 @@
         <img
           src="{{ asset('images/logo1.png') }}"
           alt="Logo"
-          width="120"
-          height="120"
-          class="me-2 rounded-circle bg-light"
+          width="60"
+          height="60"
+          class="me-2 bg-light"
         />
         PONG-MTA
       </a>
