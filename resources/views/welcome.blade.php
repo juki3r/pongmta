@@ -338,8 +338,8 @@
         <img
           src="{{ asset('images/logo1.png') }}"
           alt="Logo"
-          width="60"
-          height="60"
+          width="100"
+          height="100"
           class="me-2 rounded-circle bg-light"
         />
         PONG-MTA
